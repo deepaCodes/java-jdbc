@@ -1,0 +1,10 @@
+public class MFStructure {
+	String		cust
+	String		prod
+	int		1_sum_quant
+	int		1_count_quant
+	int		2_sum_quant
+	int		3_sum_quant
+	int		3_count_quant
+	int		1_max_quant
+}
