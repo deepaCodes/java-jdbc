@@ -1,0 +1,89 @@
+cust,prod,count_quant_1,sum_quant_3 - sum_quant_1 
+3
+cust,prod
+sum_quant_1,avg_quant_1,sum_quant_2,sum_quant_3,avg_quant_3,max_quant_1
+state_1~=~"NY" && cust_1~=~cust && prod_1~=~prod
+state_2~=~"NJ" && cust_2~=~cust && prod_2~=~prod
+state_3~=~"CT" && cust_3~=~cust && prod_3~=~prod
+sum_quant_1 > 2 * sum_quant_2 || avg_quant_1 > avg_quant_3
+
+---------------------------------------------------------------------------------------------
+Exmple-1
+Find for each customer the average sale in “NY”, the average sale in “CT”and the average sale in
+“NJ”, if New York'saverage is greater than the other two.
+
+cust,avg_quant_1,avg_quant_2,avg_quant_3
+3
+cust
+sum_quant_1,sum_quant_2,sum_quant_3,avg_quant_1,avg_quant_2,avg_quant_3
+cust_1~=~cust && state_1~=~"NY" 
+cust_2~=~cust && state_2~=~"NJ" 
+cust_3~=~cust && state_3~=~"CT" 
+avg_quant_1 > avg_quant_2 && avg_quant_1 > avg_quant_3
+
+
+----------------------------------------------------------------------------------------------
+Example-2
+For each product and for sales of 1997, show each month’s
+total sales as percentage of the year-long total sales.
+
+prod,month,sum_quant_1 / sum_quant_2
+2
+prod,month
+sum_quant_1,sum_quant_2
+prod_1~=~prod && month_1~=~month 
+prod_2~=~prod
+
+-----------------------------------------------------------------------------------------------
+Example-3
+Find for each customer and for each month of 1997 the
+customer's average sale before, during and after this month.
+
+cust,month,avg_quant_1,avg_quant_3,avg_quant_2
+3
+cust,month
+sum_quant_1,sum_quant_2,sum_quant_3,avg_quant_1,avg_quant_2,avg_quant_3
+cust_1~=~cust && month_1~<~month 
+cust_2~=~cust && month_2~>~month 
+cust_3~=~cust && month_3~=~month 
+
+-------------------------------------------------------------------------------------------------
+Example-5
+Compare for each customer and each product, the customer's
+average sale of this product versus the average sale of the
+product to the other customers.
+
+cust,prod,avg_quant_1,avg_quant_2
+2
+cust,prod
+sum_quant_1,sum_quant_2,count_quant_1,count_quant_2
+cust_1~=~cust && prod_1~=~prod
+cust_2~!=~cust && prod_2~=~prod
+
+
+----------------------------------
+Example - 6
+
+Find the sale of a product, such that sales of a product should be less than 1/4 of maximum sale of the same product
+
+prod,quant
+1
+prod,quant
+max_quant_1
+prod_1~=~prod
+quant < max_quant_1 / 4
+
+
+----------------------------------------------
+
+Example - 7
+
+Find the minimum and maximu for each product
+
+prod,max_quant_1,min_quant_1
+1
+prod
+max_quant_1,min_quant_1
+prod_1~=~prod
+
+-------------------------
