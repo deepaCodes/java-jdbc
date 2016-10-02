@@ -1,6 +1,0 @@
-prod,quant
-1
-prod,quant
-max_quant_1
-prod_1~=~prod
-quant < max_quant_1 / 4
